@@ -36,3 +36,29 @@ const users = [
     },
   },
 ];
+
+/**
+ * Trier les utilisateurs par createdAt
+ */
+const userSortedByDate = users.sort((a, b) => {
+  if (a.createdAt > b.createdAt) {
+    return 1;
+  } else if (b.createdAt > a.createdAt) {
+    return -1;
+  } else {
+    return 0;
+  }
+});
+
+/**
+ * Trier les utilisateurs par createdAt en utilisant moment
+ */
+const userSortedByDateWithMoment = users
+  .sort((a, b) => {
+    const aDate = moment(a.createdAt);
+    const bDate = moment(b.createdAt);
+    return aDate.diff(bDate);
+  })
+  .map((u) => u.name);
+
+console.log(userSortedByDateWithMoment);
