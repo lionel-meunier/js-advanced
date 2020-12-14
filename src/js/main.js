@@ -1,20 +1,46 @@
 // Exercice 1
 // Récupérer la list des utilisateurs et créer le tableau trier par nombre de voisin
 
-fetch("https://api.jsonapi.co/rest/v1/user/list?limit=50")
-  .then((res) => res.json())
-  .then((res) => sortUsersByNeighbor(res.data.users));
+const api = new UsersApi();
 
-fetch("https://api.jsonapi.co/rest/v1/user/login", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    email: "toto",
-    password: "toto",
-  }),
-})
-  .then((res) => res.json())
-  .then((res) => res.data.token)
-  .then((res) => console.log(res));
+api.getUsers().then((users) => {
+  const usersRenderer = new UsersRenderer(users);
+  document.getElementById("users").innerHTML = usersRenderer.render();
+});
+
+// Ajout d'un event listener sur du html qui n'est pas encore créer
+document.addEventListener("click", (event) => {
+  if (event.target && event.target.classList.contains("btn-show-detail")) {
+    api.getDetailUser(event.target.dataset.id).then((res) => {
+      alert(JSON.stringify(res));
+    });
+  }
+});
+
+document.querySelector("form#loginForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const username = event.target.querySelector("input[name=username]").value;
+  const password = event.target.querySelector("input[name=password]").value;
+  api
+    .login(username, password)
+    .then((token) => {
+      alert(`Token : ${token}`);
+    })
+    .catch(() => {
+      event.target.querySelector(".message").classList.add("d-block");
+    });
+});
+
+document
+  .querySelector("#hello")
+  .addEventListener("click", () => alert("Bonjour"));
+
+let count = 0;
+document.querySelector("#inc button").addEventListener("click", () => {
+  // increment count de 1 equivalent a count = count + 1
+  count++;
+  // remplace le html de l'element ayant la class value dans un element avec l'id inc
+  document.querySelector("#inc .value").innerHTML = count;
+});

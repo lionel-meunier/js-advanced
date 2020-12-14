@@ -3,33 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.css"
+    />
     <script src="node_modules/moment/moment.js"></script>
   </head>
-  <body>
+  <body class="container">
     <h1>TEST</h1>
 
-    <button id="hello" type="button" class="btn btn-default">Bonjour</button>
+    <button id="hello" type="button" class="btn btn-secondary">Bonjour</button>
 
     <div id="inc">
-      <button type="button" class="btn btn-default">++</button>
+      <button type="button" class="btn btn-secondary">++</button>
       <span class="value"></span>
     </div>
 
     <form id="loginForm">
       <div class="form-group">
         <label for="username">username</label>
-        <input type="text" id="username" name="username" />
+        <input type="text" class="form-control" id="username" name="username" />
       </div>
       <div class="form-group">
         <label for="password">password</label>
-        <input type="password" id="password" name="password" />
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+        />
       </div>
+      <div class="message d-none">Il y a une erreur</div>
       <div>
         <button class="btn btn-primary">Login</button>
       </div>
     </form>
 
-    <script src="src/js/main.js"></script>
+    <div id="users"></div>
+
     <script src="src/js/users.js"></script>
+    <script src="src/js/renderer.js"></script>
+    <script src="src/js/api.js"></script>
+    <script src="src/js/main.js"></script>
   </body>
 </html>

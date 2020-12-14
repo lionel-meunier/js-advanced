@@ -13,6 +13,7 @@
     "http-server": "^0.12.3"
   },
   "dependencies": {
+    "bootstrap": "^4.5.3",
     "moment": "^2.29.1"
   }
 }
