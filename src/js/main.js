@@ -8,6 +8,7 @@ api.getUsers().then((users) => {
   document.getElementById("users").innerHTML = usersRenderer.render();
 });
 
+api.getAll();
 // Ajout d'un event listener sur du html qui n'est pas encore créer
 document.addEventListener("click", (event) => {
   if (event.target && event.target.classList.contains("btn-show-detail")) {
@@ -28,7 +29,8 @@ document.querySelector("form#loginForm").addEventListener("submit", (event) => {
     .then((token) => {
       alert(`Token : ${token}`);
     })
-    .catch(() => {
+    .catch((reason) => {
+      event.target.querySelector(".message").innerHTML = reason;
       event.target.querySelector(".message").classList.add("d-block");
     });
 });
