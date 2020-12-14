@@ -5,7 +5,12 @@ class Address {
     this.latitude = data.latitude || 0;
     this.longitude = data.longitude || 0;
   }
-
+  get position() {
+    return {
+      lat: parseInt(this.latitude, 10),
+      lng: parseInt(this.longitude, 10),
+    };
+  }
   /**
    * Compare current address with another for get distance km
    * @param {Address} compareAddress address compare with current address
@@ -35,13 +40,17 @@ class User {
     this.neighbor = new Set();
   }
 
+  get position() {
+    return this.address.position;
+  }
+
   /**
    * Compare current user with other for detect if this is neighbor
    * Is neighbor only if current address is less than 100km to another address
    * @param {User} compareUser user compared with current
    */
   isNeighbor(compareUser) {
-    return this.address.getDistance(compareUser.address) <= 100;
+    return this.address.getDistance(compareUser.address) <= 2000;
   }
 }
 

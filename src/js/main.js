@@ -1,6 +1,6 @@
-console.log("Log 1");
+// Exercice 1
+// Récupérer la list des utilisateurs et créer le tableau trier par nombre de voisin
 
-setTimeout(() => console.log("Log 2"), 1000);
-setTimeout(() => console.log("Log 3"), 500);
-
-console.log("Log 4");
+fetch("https://api.jsonapi.co/rest/v1/user/list?limit=50")
+  .then((res) => res.json())
+  .then((res) => sortUsersByNeighbor(res.data.users));
