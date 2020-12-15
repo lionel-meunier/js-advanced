@@ -29,7 +29,6 @@ class UsersApi {
   login(email, password) {
     // Fait la requête
     // POST : https://api.jsonapi.co/rest/v1/user/login
-
     return (
       fetch("https://api.jsonapi.co/rest/v1/user/login", {
         method: "POST",
