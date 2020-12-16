@@ -10,5 +10,44 @@
     <script src="node_modules/moment/moment.js" defer></script>
     <script src="src/app/main.js" defer type="module"></script>
   </head>
-  <body class="container"></body>
+  <body class="container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Exo 1</h5>
+        <button class="btn btn-secondary" id="hello">Say hello</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Exo 3</h5>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="username">username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              name="username"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+            />
+          </div>
+          <div class="message d-none">Il y a une erreur</div>
+          <div>
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body" id="users"></div>
+    </div>
+  </body>
 </html>
